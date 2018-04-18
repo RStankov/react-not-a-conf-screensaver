@@ -5,6 +5,13 @@ body {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
 }
 
 header {
@@ -37,6 +44,10 @@ header time {
   padding: 5px 10px;
 }
 
-section img {
+.sponsors img {
   margin: 5px 10px;
+}
+
+.schedule {
+  flex: 1;
 }
