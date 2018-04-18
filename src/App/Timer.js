@@ -13,7 +13,6 @@ export default class Timer extends Component {
   }
 
   tick = () => {
-    console.log('tick');
     this.setState({ time: this.getTime() });
   };
 

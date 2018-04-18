@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Timer from './Timer';
-import { formatTime } from './utils';
+import Schedule from './Schedule';
 
 export default class App extends Component {
   state = { data: null };
@@ -31,21 +31,7 @@ export default class App extends Component {
           </h1>
           <Timer />
         </header>
-        <section>
-          <h2>Schedule</h2>
-          <ul>
-            {Object.values(data.sessions).map(track =>
-              track.map(session =>
-                <li key={session.id}>
-                  {formatTime(session.startTime)}
-                  -
-                  {formatTime(session.endTime)}:
-                  {session.title}
-                </li>,
-              ),
-            )}
-          </ul>
-        </section>
+        <Schedule sessions={data.sessions} />
         <section>
           <h2>Partners</h2>
           {data.sponsors.map(sponsor =>
