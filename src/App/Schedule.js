@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { formatTime, filterSessions } from './utils';
 
 export default class Schedule extends Component {
-  state = { data: null };
-
   render() {
+    const currentTime = new Date(this.props.config.seedDate);
+
     return (
-      <section>
+      <section className="schedule">
         <h2>Schedule</h2>
         <ul>
           {Object.values(this.props.sessions).map(track =>
-            filterSessions(track).map(session =>
+            filterSessions(currentTime, track).map(session =>
               <li key={session.id}>
                 {formatTime(session.startTime)}
                 -

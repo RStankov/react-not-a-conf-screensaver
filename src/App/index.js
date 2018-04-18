@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import Timer from './Timer';
 import Schedule from './Schedule';
+import Sponsors from './Sponsors';
 
 export default class App extends Component {
   state = { data: null };
@@ -22,6 +23,8 @@ export default class App extends Component {
       return null;
     }
 
+    const { config } = this.props;
+
     return (
       <main>
         <header>
@@ -29,20 +32,10 @@ export default class App extends Component {
           <h1>
             {data.event.name}
           </h1>
-          <Timer />
+          <Timer config={config} />
         </header>
-        <Schedule sessions={data.sessions} />
-        <section>
-          <h2>Partners</h2>
-          {data.sponsors.map(sponsor =>
-            <img
-              key={sponsor.id}
-              src={sponsor.logoUrl}
-              alt=""
-              height={this.props.config.sponsorLogoHeight}
-            />,
-          )}
-        </section>
+        <Schedule config={config} sessions={data.sessions} />
+        <Sponsors config={config} sponsors={data.sponsors} />
       </main>
     );
   }

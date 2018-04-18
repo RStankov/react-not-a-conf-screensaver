@@ -4,8 +4,8 @@ export function formatTime(time) {
   return time ? moment(time).format('HH:mm') : null;
 }
 
-function getStatus(startTime, endTime) {
-  const time = moment(new Date('2018-04-28T15:30:01'));
+function getStatus(currentTime, startTime, endTime) {
+  const time = moment(currentTime);
 
   if (time.isBefore(startTime, 'seconds')) {
     return 'idle';
@@ -18,9 +18,10 @@ function getStatus(startTime, endTime) {
   return time.isAfter(endTime, 'seconds') ? 'over' : 'started';
 }
 
-export function filterSessions(sessions) {
+export function filterSessions(currentTime, sessions) {
   let decorated = sessions.map((session, i) => {
     const status = getStatus(
+      currentTime,
       session.startTime,
       session.endTime || (sessions[i + 1] && sessions[i + 1].startTime),
     );
