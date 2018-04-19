@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { formatTime } from './utils';
+import clockImage from './clock.svg';
 
 export default class Timer extends Component {
   state = { time: this.getTime() };
@@ -18,7 +19,8 @@ export default class Timer extends Component {
 
   render() {
     return (
-      <time>
+      <time className="timer">
+        <img src={clockImage} height="35" alt="" />
         {this.state.time}
       </time>
     );

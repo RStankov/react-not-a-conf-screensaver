@@ -12,10 +12,10 @@ function getStatus(currentTime, startTime, endTime) {
   }
 
   if (!endTime) {
-    return 'started';
+    return 'live';
   }
 
-  return time.isAfter(endTime, 'seconds') ? 'over' : 'started';
+  return time.isAfter(endTime, 'seconds') ? 'over' : 'live';
 }
 
 export function filterSessions(currentTime, sessions) {
@@ -30,7 +30,7 @@ export function filterSessions(currentTime, sessions) {
       ...session,
       isNext: false,
       isOver: status === 'over',
-      isStarted: status === 'started',
+      isLive: status === 'live',
     };
   });
 
@@ -41,10 +41,10 @@ export function filterSessions(currentTime, sessions) {
 
   decorated = decorated.map((session, i) => {
     const isNext =
-      !session.isStarted &&
+      !session.isLive &&
       !session.isOver &&
       decorated[i - 1] &&
-      (decorated[i - 1].isOver || decorated[i - 1].isStarted);
+      (decorated[i - 1].isOver || decorated[i - 1].isLive);
 
     if (isNext) {
       return { ...session, isNext };
