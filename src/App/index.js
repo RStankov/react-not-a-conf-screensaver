@@ -1,7 +1,8 @@
+import './styles.css';
+import Footer from './Footer';
 import React, { Component } from 'react';
 import Schedule from './Schedule';
 import Sponsors from './Sponsors';
-import './styles.css';
 import leftImage from './left.png';
 import rightImage from './right.png';
 
@@ -35,6 +36,7 @@ export default class App extends Component {
         </header>
         <Schedule config={config} sessions={data.sessions} />
         <Sponsors config={config} sponsors={data.sponsors} />
+        <Footer config={config} />
       </main>
     );
   }

@@ -68,6 +68,19 @@ section {
   padding: 0 20px;
 }
 
+footer {
+  max-width: 1065px;
+  width: 100%;
+  margin: 0 auto 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+footer div {
+  flex: 1;
+}
+
 section h2 {
   font-size: 28px;
   margin: 0;
