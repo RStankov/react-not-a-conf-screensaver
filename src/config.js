@@ -2,8 +2,8 @@ import React from 'react';
 import wifiImage from './App/wifi.svg';
 
 export default {
-  seedDate: '2018-04-28T15:30:01',
-  fetchUrl: 'http://react-not-a-conf.com/schedules/2018.json',
+  // time: new Date('2019-05-11T09:45:00.000+00:00'),
+  fetchUrl: 'http://react-not-a-conf.com/schedules/2019.json',
   sponsorLogoHeight: 40,
   footerText: (
     <span>

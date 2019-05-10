@@ -8,7 +8,7 @@ export default class Schedule extends Component {
   state = { sessions: this.getSessions() };
 
   getSessions() {
-    const currentTime = new Date(this.props.config.seedDate);
+    const currentTime = this.props.config.time || new Date();
     return filterSessions(currentTime, Object.values(this.props.sessions)[0]);
   }
 
@@ -25,7 +25,7 @@ export default class Schedule extends Component {
       <section className="schedule">
         <h2>Schedule</h2>
         <Timer config={this.props.config} />
-        {this.state.sessions.map(session =>
+        {this.state.sessions.map(session => (
           <div
             key={session.id}
             className={classNames('schedule-listing', {
@@ -40,33 +40,33 @@ export default class Schedule extends Component {
             <div className="schedule-slot-info">
               {session.speakers.map(
                 speaker =>
-                  speaker.avatarUrl &&
-                  <img
-                    alt=""
-                    className="schedule-slot-speakers"
-                    height="58"
-                    key={speaker.id}
-                    src={speaker.avatarUrl}
-                    width="58"
-                  />,
+                  speaker.avatarUrl && (
+                    <img
+                      alt=""
+                      className="schedule-slot-speakers"
+                      height="58"
+                      key={speaker.id}
+                      src={speaker.avatarUrl}
+                      width="58"
+                    />
+                  ),
               )}
               <div className="schedule-slot-info-content">
-                <h3 className="schedule-slot-title">
-                  {session.title}
-                </h3>
-                {session.speakers.map(speaker =>
+                <h3 className="schedule-slot-title">{session.title}</h3>
+                {session.speakers.map(speaker => (
                   <h4 key={speaker.id} className="schedule-slot-speaker-name">
                     {speaker.name}
-                  </h4>,
-                )}
-                {session.isLive &&
+                  </h4>
+                ))}
+                {session.isLive && (
                   <div className="icon">
                     <img src={rocketImage} alt="" />
-                  </div>}
+                  </div>
+                )}
               </div>
             </div>
-          </div>,
-        )}
+          </div>
+        ))}
       </section>
     );
   }

@@ -6,7 +6,7 @@ export default class Timer extends Component {
   state = { time: this.getTime() };
 
   getTime() {
-    return formatTime(new Date(this.props.config.seedDate));
+    return formatTime(this.props.config.time || new Date());
   }
 
   componentDidMount() {
