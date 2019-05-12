@@ -1,11 +1,15 @@
 import moment from 'moment';
 
 export function formatTime(time) {
-  return time ? moment(time).format('HH:mm') : null;
+  return time
+    ? moment(time)
+        .utc(false)
+        .format('HH:mm')
+    : null;
 }
 
 function getStatus(currentTime, startTime, endTime) {
-  const time = moment(currentTime);
+  const time = moment(currentTime).utc(false);
 
   if (time.isBefore(startTime, 'seconds')) {
     return 'idle';
